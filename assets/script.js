@@ -25,6 +25,8 @@ var saveFifteen = $("#save15");
 var saveSixteen = $("#save16");
 var saveSeventeen = $("#save17");
 
+/// Gets information from local storage
+
 nineHr.val(localStorage.getItem("9am"));
 tenHr.val(localStorage.getItem("10am"));
 elevenHr.val(localStorage.getItem("11am"));
@@ -75,22 +77,26 @@ saveSeventeen.on("click", () => {
 
 /// This function will change the color of the rows by adding and removing classes.
 
-function currentTime(){     
-    var currentTime = moment().hours();
-    
+function currentTime() {     
+  var currentHour = moment().hours();
     $(".row").each(function() {
-        var pastHr = parseInt($(this).attr("id").split("-"));
-       if (pastHr < currentTime) {
+        var pastHr
+      
+        if (pastHr < currentHour) {
            $(this).addClass("past");
-       } else if (pastHr === currentTime) {
-           $(this).removeClass("past");
-           $(this).addClass("present");
-       }else {
-           $(this).removeClass("past");
-           $(this).removeClass("present");
-           $(this).addClass("future");
+        }
+        else if (pastHr === currentHour) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
        }
-    });
+       else{
+           $(this).removeClass("past");
+            $(this).removeClass("present");
+            $(this).addClass("future");
+     }
+  });
 }
 
 currentTime();
+
+var interval = setInterval(currentTime, 15000);
