@@ -1,7 +1,7 @@
-var today = moment("");
+var today = moment();
 
 
-$("moment").text(today.format('LLLL'));
+$("#moment").text(today.format('LLLL'));
 
 /// Input var button bellow
 
