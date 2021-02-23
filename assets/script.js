@@ -1,4 +1,5 @@
-var today = moment();
+var today = moment("");
+
 
 $("moment").text(today.format('LLLL'));
 
