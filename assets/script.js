@@ -1,6 +1,4 @@
 var today = moment();
-
-
 $("#moment").text(today.format('LLLL'));
 
 /// Input var button bellow
@@ -74,3 +72,25 @@ saveSixteen.on("click", () => {
 saveSeventeen.on("click", () => {
     localStorage.setItem("5pm", seventeenHr.val())
 });
+
+/// This function will change the color of the rows by adding and removing classes.
+
+function currentTime(){     
+    var currentTime = moment().hours();
+    
+    $(".row").each(function() {
+        var pastHr = parseInt($(this).attr("id").split("-"));
+       if (pastHr < currentTime) {
+           $(this).addClass("past");
+       } else if (pastHr === currentTime) {
+           $(this).removeClass("past");
+           $(this).addClass("present");
+       }else {
+           $(this).removeClass("past");
+           $(this).removeClass("present");
+           $(this).addClass("future");
+       }
+    });
+}
+
+currentTime();
