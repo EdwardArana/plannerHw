@@ -3,15 +3,15 @@ $("#moment").text(today.format('LLLL'));
 
 /// Input var button bellow
 
-var nineHr = $("#hourInput9");
-var tenHr = $("#hourInput10");
-var elevenHr = $("#hourInput11");
-var twelveHr = $("#hourInput12");
-var thirteenHr = $("#hourInput13");
-var fourteenHr = $("#hourInput14");
-var fifteenHr = $("#hourInput15");
-var sixteenHr = $("#hourInput16");
-var seventeenHr = $("#hourInput17");
+var nineHr = $("#9");
+var tenHr = $("#10");
+var elevenHr = $("#11");
+var twelveHr = $("#12");
+var thirteenHr = $("#13");
+var fourteenHr = $("#14");
+var fifteenHr = $("#15");
+var sixteenHr = $("#16");
+var seventeenHr = $("#17");
 
 /// Save var buttons bellow
 
@@ -80,23 +80,24 @@ saveSeventeen.on("click", () => {
 function currentTime() {     
   var currentHour = moment().hours();
     $(".row").each(function() {
-        var pastHr
+        var pastHr = $(this).children().attr("id")
+        console.log(pastHr);
       
         if (pastHr < currentHour) {
-           $(this).addClass("past");
+           $(this).children(".notes").addClass("past");
         }
-        else if (pastHr === currentHour) {
-            $(this).removeClass("past");
-            $(this).addClass("present");
+        else if (pastHr == currentHour) {
+            $(this).children(".notes").removeClass("past");
+            $(this).children(".notes").addClass("present");
        }
        else{
-           $(this).removeClass("past");
-            $(this).removeClass("present");
-            $(this).addClass("future");
+           $(this).children(".notes").removeClass("past");
+            $(this).children(".notes").removeClass("present");
+            $(this).children(".notes").addClass("future");
      }
   });
 }
 
 currentTime();
 
-var interval = setInterval(currentTime, 15000);
+
