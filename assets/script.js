@@ -36,6 +36,7 @@ fifteenHr.val(localStorage.getItem("3pm"));
 sixteenHr.val(localStorage.getItem("4pm"));
 seventeenHr.val(localStorage.getItem("5pm"));
 
+/// This is saving the information once the button is pressed
 
 saveNine.on("click", () => {
     localStorage.setItem("9am", nineHr.val())
